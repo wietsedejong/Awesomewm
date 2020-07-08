@@ -282,7 +282,7 @@ globalkeys = my_table.join(
         {description = "Firefox" , group = "apps" }),
     awful.key({ modkey, altkey }, "t", function () awful.util.spawn( "thunderbird" ) end,
         {description = "Thunderbird" , group = "apps" }),
-    awful.key({ modkey, altkey  }, "a", function () awful.util.spawn( "atom" ) end,
+    awful.key({ modkey, altkey  }, "a", function () awful.util.spawn( "Atom" ) end,
         {description = "Atom code" , group = "apps" }),
   awful.key({ modkey, altkey }, "k", function () awful.util.spawn( "keepassxc" ) end,
        {description = "keepassxc" , group = "apps" }),

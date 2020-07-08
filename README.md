@@ -1,7 +1,8 @@
 # My Awesome Configuration
 
-I use awesome in POP-OS this make my set-up family friendly
-The POP-0S desktop for wife and kids and Awesome for me
+I use awesome in POP-OS or Linux mint this make my set-up family friendly.
+The POP-0S desktop or Linux Mint for wife and kids and Awesome for me.
+Quick tip: instaling awesome window manager alongside XFCE desktop works good beacouse XFCE is higly modular. You can use de XFCE widgets in your taskbar.
 
 # My Keybindings
 
@@ -15,8 +16,6 @@ The MODKEY is set to the Super key (aka the Windows key).
 | `MODKEY + ALT + B` | Opens browser |
 | `MODKEY + q` | quits tab |
 
-## Getting Help With Awesome
-
 ## License
 
 The project is licensed under GNU General Public License v2 or later.
@@ -26,11 +25,12 @@ or [v3](http://www.gnu.org/licenses/gpl.html)).
 
 ## Installation
 ============
+This wil copy this awesome  config to your .config file
 
 .. code-block:: shell
 
-    $ git clone --recursive https://github.com/...
-    $ mv -bv awesome-copycats/* ~/.config/awesome && rm -rf awesome..
+    $ git clone --recursive https://github.com/wietsedejong/awesome
+    $ mv -bv awesome/* ~/.config/awesome && rm -rf awesome
 
 ## Usage
 =====
@@ -59,10 +59,6 @@ Otherwise, if you want to be synced with upstream, modify the theme path in ``rc
 
     -beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
     +beautiful.init(string.format("%s/.config/awesome/themes/%s/theme-personal.lua", os.getenv("HOME"), chosen_theme))
-
-then, copy ``theme.lua`` to ``theme-personal.lua`` and do your customizations there.
-
-This way, you can safely ``git pull`` anytime.
 
 ## Notes
 =====

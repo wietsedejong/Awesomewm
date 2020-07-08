@@ -54,18 +54,17 @@ run_once({ "unclutter -root" }) -- entries must be separated by commas
 -- {{{ Variable definitions
 
 local themes = {
-    "blackburn",       -- 1
+    "batcat",          -- 1
     "copland",         -- 2
     "holo",            -- 3
     "multicolor",      -- 4
     "powerarrow",      -- 5
     "rainbow",         -- 6
     "vertex",          -- 7
-    "batcat",          -- 8
-}
+  }
 
 -- choose your theme here
-local chosen_theme = themes[2]
+local chosen_theme = themes[3]
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
@@ -78,7 +77,7 @@ local modkey1      = "Control"
 -- personal variables
 --change these variables if you want
 local browser           = "firefox"
-local editor            = os.getenv("EDITOR") or "nano"
+local editor            = os.getenv("EDITOR") or "vim"
 local editorgui         = "atom"
 local filemanager       = "pcmanfm"
 local mailclient        = "geary"
@@ -269,11 +268,11 @@ globalkeys = my_table.join(
 awful.key({ modkey, altkey }, "1", function () awful.util.spawn( "terminator -e htop" ) end,
                                 {description = "Htop" , group = "terminal - apps" }),
 awful.key({ modkey, altkey }, "2", function () awful.util.spawn( "terminator -e ranger" ) end,
-                                {description = "Htop" , group = "terminal - apps" }),
+                                {description = "Ranger" , group = "terminal - apps" }),
 awful.key({ modkey, altkey }, "3", function () awful.util.spawn( "terminator -e pulsemixer" ) end,
-                                {description = "Htop" , group = "terminal - apps" }),
-awful.key({ modkey, altkey }, "4", function () awful.util.spawn( "terminator -e curl wttr.in" ) end,
-                               {description = "Htop" , group = "terminal - apps" }),
+                                {description = "Volumme control - Pulsemixer" , group = "terminal - apps" }),
+awful.key({ modkey, altkey }, "4", function () awful.util.spawn( "terminator -e neomutt" ) end,
+                               {description = "Email - Neomutt" , group = "terminal - apps" }),
 
     -- Hotkeys Awesome
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
