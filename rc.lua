@@ -83,12 +83,13 @@ local filemanager       = "pcmanfm"
 local mailclient        = "geary"
 local mediaplayer       = "vlc"
 --local scrlocker         = "slimlock"
-local terminal          = "terminator"
+local terminal          = "termite" 
 --local virtualmachine    = "virtualbox"
 
 -- awesome variables
 awful.util.terminal = terminal
 awful.util.tagnames = {  "1", "2", "3", " 4", "5", "6", "7", "8",}
+--awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒", "➓" }
 --awful.util.tagnames = {"⠐ "," ⠡ "," ⠲ "," ⠵ "," ⠻"," ⠿ "," ⠲⠵ "," ⠿⠡ "}
 --awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
 --awful.util.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MEDIA ", " GFX " }
@@ -279,6 +280,12 @@ awful.key({ modkey, altkey }, "4", function () awful.util.spawn( "terminator -e 
         {description = "show help", group="Basic"}),
     awful.key({ modkey,           }, "w", function () awful.util.mymainmenu:show() end,
                       {description = "show main menu", group = "Basic"}),
+    awful.key({ modkey }, "x",  function () awful.util.spawn( "arcolinux-logout" ) end,
+                        {description = "exit", group = "Basic"}),
+    awful.key({ modkey, "Shift" }, "x",  function () awful.util.spawn( "systemctl poweroff" ) end,
+                                            {description = "shutdown", group = "Basic"}),
+    awful.key({ modkey }, "Escape", function () awful.util.spawn( "xkill" ) end,
+                            {description = "Kill proces", group = "Basic"}),
 
   -- Show/Hide Wibox
     awful.key({ modkey }, "b", function ()
@@ -659,4 +666,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Autostart applications
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
-awful.spawn.with_shell("compton --config  $HOME/.config/compton/compton.conf")
+awful.spawn.with_shell("picom -b --config  $HOME/.config/awesome/picom.conf")
+--awful.spawn.with_shell("compton --config  $HOME/.config/compton/compton.conf")
+-- use picom or compton

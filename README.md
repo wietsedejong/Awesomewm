@@ -2,7 +2,7 @@
 
 I use awesome in POP-OS or Linux mint this make my set-up family friendly.
 The POP-0S desktop or Linux Mint for wife and kids and Awesome for me.
-Quick tip: instaling awesome window manager alongside XFCE desktop works good beacouse XFCE is higly modular. You can use de XFCE widgets in your taskbar.
+Quick tip: instaling awesome window manager alongside XFCE desktop or LXQT works good beacouse XFCE and LXQT or higly modular. You can use de XFCE widgets in your taskbar.
 
 # My Keybindings
 
@@ -29,8 +29,8 @@ This wil copy this awesome  config to your .config file
 
 .. code-block:: shell
 
-    $ git clone --recursive https://github.com/wietsedejong/awesome
-    $ mv -bv awesome/* ~/.config/awesome && rm -rf awesome
+    $ git clone --recursive https://github.com/wietsedejong/Awesomewm
+    $ mv -bv Awesomewm/* ~/.config/awesome && rm -rf Awesomewm
 
 ## Usage
 =====
