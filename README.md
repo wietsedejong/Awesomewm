@@ -27,7 +27,7 @@ or [v3](http://www.gnu.org/licenses/gpl.html)).
 ============
 This wil copy this awesome  config to your .config file
 
-    $ git clone --recursive https://github.com/wietsedejong/Awesomewm
+    $ git clone --recursive https://github.com/wietsedejong/awesomewm
 
     $ mv -bv awesomewm/* ~/.config/awesome && rm -rf awesomewm
 
