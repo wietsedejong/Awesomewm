@@ -45,6 +45,9 @@ theme.spr_right                                 = theme.icon_dir .. "/spr_right.
 theme.spr_bottom_right                          = theme.icon_dir .. "/spr_bottom_right.png"
 theme.spr_left                                  = theme.icon_dir .. "/spr_left.png"
 theme.bar                                       = theme.icon_dir .. "/bar.png"
+theme.bat                                       = theme.icon_dir .. "/bat.png"
+theme.bat_low                                   = theme.icon_dir .. "/bat_low.png"
+theme.bat_no                                    = theme.icon_dir .. "/bat_no.png"
 theme.bottom_bar                                = theme.icon_dir .. "/bottom_bar.png"
 theme.mpdl                                      = theme.icon_dir .. "/mpd.png"
 theme.mpd_on                                    = theme.icon_dir .. "/mpd_on.png"
@@ -120,14 +123,48 @@ theme.cal = lain.widget.cal({
 })
 
 -- Battery
-local bat = lain.widget.bat({
+local baticon = wibox.widget.imagebox(theme.bat)
+local batbar = wibox.widget {
+    forced_height    = dpi(1),
+    forced_width     = dpi(59),
+    color            = theme.fg_normal,
+    background_color = theme.bg_normal,
+    margins          = 1,
+    paddings         = 1,
+    ticks            = true,
+    ticks_size       = dpi(6),
+    widget           = wibox.widget.progressbar,
+}
+local batupd = lain.widget.bat({
     settings = function()
-        bat_header = " Bat "
-        bat_p      = bat_now.perc .. " "
-        if bat_now.ac_status == 1 then
-            bat_p = bat_p .. "Plugged "
+        if (not bat_now.status) or bat_now.status == "N/A" or type(bat_now.perc) ~= "number" then return end
+
+        if bat_now.status == "Charging" then
+            baticon:set_image(theme.ac)
+            if bat_now.perc >= 98 then
+                batbar:set_color(green)
+            elseif bat_now.perc > 50 then
+                batbar:set_color(theme.fg_normal)
+            elseif bat_now.perc > 15 then
+                batbar:set_color(theme.fg_normal)
+            else
+                batbar:set_color(red)
+            end
+        else
+            if bat_now.perc >= 98 then
+                batbar:set_color(green)
+            elseif bat_now.perc > 50 then
+                batbar:set_color(theme.fg_normal)
+                baticon:set_image(theme.bat)
+            elseif bat_now.perc > 15 then
+                batbar:set_color(theme.fg_normal)
+                baticon:set_image(theme.bat_low)
+            else
+                batbar:set_color(red)
+                baticon:set_image(theme.bat_no)
+            end
         end
-        widget:set_markup(markup.font(theme.font, markup(blue, bat_header) .. bat_p))
+        batbar:set_value(bat_now.perc / 100)
     end
 })
 
@@ -268,8 +305,8 @@ function theme.at_screen_connect(s)
 --            bottom_bar,
 --            calendar_icon,
 --            calendarwidget,
---              bat,
---              bar_spr,
+baticon,
+batwidget,
 --              volicon,
 --              volumewidget,
               tray,

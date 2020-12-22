@@ -48,7 +48,7 @@ local function run_once(cmd_arr)
     end
 end
 
---run_once({ "terminator", "unclutter -root" }) -- entries must be separated by commas
+--run_once({ "termite", "unclutter -root" }) -- entries must be separated by commas
 run_once({ "unclutter -root" }) -- entries must be separated by commas
 
 -- {{{ Variable definitions
@@ -58,13 +58,14 @@ local themes = {
     "copland",         -- 2
     "holo",            -- 3
     "multicolor",      -- 4
-    "powerarrow",      -- 5
-    "rainbow",         -- 6
-    "vertex",          -- 7
+    "power",           -- 5
+    "powerarrow",      -- 6
+    "rainbow",         -- 7
+    "vertex",          -- 8
   }
 
 -- choose your theme here
-local chosen_theme = themes[3]
+local chosen_theme = themes[5]
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
@@ -79,8 +80,8 @@ local modkey1      = "Control"
 local browser           = "firefox"
 local editor            = os.getenv("EDITOR") or "vim"
 local editorgui         = "atom"
-local filemanager       = "pcmanfm"
-local mailclient        = "geary"
+local filemanager       = "dolphin"
+local mailclient        = "thunderbird"
 local mediaplayer       = "vlc"
 --local scrlocker         = "slimlock"
 local terminal          = "termite"
@@ -94,11 +95,11 @@ awful.util.tagnames = {  "1", "2", "3", " 4", "5", "6", "7", "8",}
 --awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
 --awful.util.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MEDIA ", " GFX " }
 -- Use this : https://fontawesome.com/cheatsheet
---awful.util.tagnames = { "", "", "", "", "" }
+--awful.util.tagnames = { "", "", "", "", "" }
 awful.layout.suit.tile.left.mirror = true
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.max,
+    --awful.layout.suit.max,
     --awful.layout.suit.floating,
     --awful.layout.suit.tile.left,
     --awful.layout.suit.tile.bottom,
@@ -253,8 +254,8 @@ globalkeys = my_table.join(
     -- My applications (Super+Alt+Key)
   awful.key({ modkey, altkey  }, "b", function () awful.util.spawn( "firefox" ) end,
         {description = "Browser - Firefox" , group = "apps" }),
-  awful.key({ modkey, altkey }, "e", function () awful.util.spawn( "geary" ) end,
-        {description = "Email - Geary" , group = "apps" }),
+  awful.key({ modkey, altkey }, "e", function () awful.util.spawn( "thunderbird" ) end,
+        {description = "Email - thunderbird" , group = "apps" }),
   awful.key({ modkey, altkey  }, "a", function () awful.util.spawn( "atom" ) end,
         {description = "Atom code" , group = "apps" }),
   awful.key({ modkey, altkey }, "k", function () awful.util.spawn( "keepassxc" ) end,
@@ -266,13 +267,13 @@ globalkeys = my_table.join(
   awful.key({ modkey, altkey }, "f", function () awful.util.spawn( "pcmanfm" ) end,
                                 {description = "Files - pcmanfm" , group = "apps" }),
 
-awful.key({ modkey, altkey }, "1", function () awful.util.spawn( "terminator -e htop" ) end,
+awful.key({ modkey, altkey }, "1", function () awful.util.spawn( "termite -e htop" ) end,
                                 {description = "Htop" , group = "terminal - apps" }),
-awful.key({ modkey, altkey }, "2", function () awful.util.spawn( "terminator -e ranger" ) end,
+awful.key({ modkey, altkey }, "2", function () awful.util.spawn( "termite -e ranger" ) end,
                                 {description = "Ranger" , group = "terminal - apps" }),
-awful.key({ modkey, altkey }, "3", function () awful.util.spawn( "terminator -e pulsemixer" ) end,
+awful.key({ modkey, altkey }, "3", function () awful.util.spawn( "termite -e pulsemixer" ) end,
                                 {description = "Volumme control - Pulsemixer" , group = "terminal - apps" }),
-awful.key({ modkey, altkey }, "4", function () awful.util.spawn( "terminator -e neomutt" ) end,
+awful.key({ modkey, altkey }, "4", function () awful.util.spawn( "termite -e neomutt" ) end,
                                {description = "Email - Neomutt" , group = "terminal - apps" }),
 
     -- Hotkeys Awesome
@@ -566,7 +567,7 @@ awful.rules.rules = {
     --{ rule = { class = "Firefox" },
     --  properties = { tag = awful.util.tagnames[1] , focus=true}},
 
-    --  { rule = { class = "terminator" },
+    --  { rule = { class = "termite" },
     --    properties = { tag = awful.util.tagnames[4] , focus=true}},
 
     --{ rule = { class = "Atom" },
