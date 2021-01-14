@@ -67,6 +67,7 @@ local themes = {
 -- choose your theme here
 local chosen_theme = themes[5]
 
+
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
 
@@ -89,13 +90,13 @@ local terminal          = "termite"
 
 -- awesome variables
 awful.util.terminal = terminal
-awful.util.tagnames = {  "1", "2", "3", " 4", "5", "6", "7", "8",}
+--awful.util.tagnames = {  "1", "2", "3", " 4", "5", "6", "7", "8",}
 --awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒", "➓" }
---awful.util.tagnames = {"⠐ "," ⠡ "," ⠲ "," ⠵ "," ⠻"," ⠿ "," ⠲⠵ "," ⠿⠡ "}
+awful.util.tagnames = {"⠐ "," ⠡ "," ⠲ "," ⠵ "," ⠻"," ⠿ "," ⠲⠵ "," ⠿⠡ "}
 --awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
 --awful.util.tagnames = { " DEV ", " WWW ", " SYS ", " DOC ", " VBOX ", " CHAT ", " MEDIA ", " GFX " }
 -- Use this : https://fontawesome.com/cheatsheet
---awful.util.tagnames = { "", "", "", "", "" }
+--awful.util.tagnames = { "", "", "", "", "", "", "",}
 awful.layout.suit.tile.left.mirror = true
 awful.layout.layouts = {
     awful.layout.suit.tile,
@@ -344,10 +345,10 @@ awful.key({ modkey, altkey }, "4", function () awful.util.spawn( "termite -e neo
         {description = "focus right", group = "client"}),
 
 -- Layout manipulation
---    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
---              {description = "swap with next client by index", group = "client"}),
---    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
---              {description = "swap with previous client by index", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
+              {description = "swap with next client by index", group = "client"}),
+   awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
+              {description = "swap with previous client by index", group = "client"}),
     awful.key({ modkey,      }, ",", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey,      }, ".", function () awful.screen.focus_relative(-1) end,

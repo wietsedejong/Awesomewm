@@ -1,5 +1,8 @@
 
 
+
+local updates = wibox.widget.textbox(awful.spawn.with_shell("~/.config/aweome/scripts/scripts/pacupdate.sh"))
+
 -- Mod+ Shift +Left/Right: move client to prev/next tag and switch to it
 awful.key({ modkey, "Shift" }, "Left",
     function ()

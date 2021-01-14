@@ -19,24 +19,24 @@ theme.dir                                       = os.getenv("HOME") .. "/.config
 theme.wallpaper                                 = theme.dir .. "/wallpaper.jpg"
 theme.font                                      = "Mononoki Nerd Font 9" --"Roboto Regular 9"
 theme.fg_normal                                 = "#FEFEFE"
-theme.fg_focus                                  = "#32D6FF"
+theme.fg_focus                                  = "#222222"
 theme.fg_urgent                                 = "#C83F11"
 theme.bg_normal                                 = "#222222"
-theme.bg_focus                                  = "#1E2320"
+theme.bg_focus                                  = "#A77AC4"
 theme.bg_urgent                                 = "#3F3F3F"
-theme.taglist_fg_focus                          = "#00CCFF"
+theme.taglist_fg_focus                          = "#222222"
 theme.tasklist_bg_focus                         = "#222222"
-theme.tasklist_fg_focus                         = "#00CCFF"
+theme.tasklist_fg_focus                         = "#A77AC4"
 theme.border_width                              = dpi(2)
-theme.border_normal                             = "#3F3F3F"
-theme.border_focus                              = "#6F6F6F"
+theme.border_normal                             = "#4B3B51"
+theme.border_focus                              = "#A77AC4"
 theme.border_marked                             = "#CC9393"
 theme.titlebar_bg_focus                         = "#3F3F3F"
 theme.titlebar_bg_normal                        = "#3F3F3F"
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
-theme.menu_height                               = dpi(16)
+theme.menu_height                               = dpi(20)
 theme.menu_width                                = dpi(140)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
 theme.awesome_icon                              = theme.dir .. "/icons/awesome.png"
@@ -107,6 +107,9 @@ local separators = lain.util.separators
 
 --Separator
 spr = wibox.widget.textbox("  | ")
+
+--updates = awful.spawn.with_shell("~/.config/aweome/scripts/scripts/upt.sh")
+
 
 -- Textclock
 local clockicon = wibox.widget.imagebox(theme.widget_clock)
@@ -312,7 +315,7 @@ function theme.at_screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(16), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(18), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -337,11 +340,12 @@ function theme.at_screen_connect(s)
             scissors,spr,
             --mpdicon,spr,
             --task,spr,
-           baticon, bat.widget,spr,
+            --updates, spr,
            neticon, net.widget,spr,
            volicon,
            volumewidget,spr,
            wibox.widget.systray(),spr,
+           baticon, bat.widget,spr,
            clock,spr,
 
             --]]
